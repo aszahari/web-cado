@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- CANVAS BACKGROUND -->
+  <canvas id="loveCanvas"></canvas>
+  <canvas id="spaceCanvas"></canvas>
+
+  <!-- 1. COUNTDOWN -->
+  <div id="countdown">3</div>
+
+  <!-- 2. TEKS PAGI -->
+  <div id="welcome" class="hidden">
+    <h1 id="text1"></h1>
+    <h2 id="text2"></h2>
+  </div>
+
+  <!-- 3. STIKER -->
+  <div id="sticker" class="hidden">
+    <img src="assets/stiker.jpeg" alt="stiker">
+  </div>
+
+  <!-- 4. FLIP BOOK -->
+  <div id="album" class="hidden">
+    <div class="book">
+
+      <!--
+        LAYER SUSUNAN (bawah ke atas):
+        1. base-spread  : foto3 (kiri bawah) + foto4 (kanan bawah)  → z-index 1
+        2. page-left    : foto1 (kiri atas)                          → z-index 2
+        3. page-right   : foto2 depan / foto3 belakang               → z-index 3
+        4. cover        : penutup penuh buku                         → z-index 10
+      -->
+
+      <!-- LAYER 1 : spread tersembunyi di balik halaman kanan -->
+      <div class="base-spread">
+        <div class="base-half left">
+          <img src="assets/foto3.jpeg" alt="foto 3">
+        </div>
+        <div class="base-half right" id="baseRight">
+          <img src="assets/foto4.jpeg" alt="foto 4">
+        </div>
+      </div>
+
+      <!-- LAYER 2 : halaman kiri statis (foto1) -->
+      <div class="page-left" id="pageLeft">
+        <img src="assets/foto1.jpeg" alt="foto 1">
+      </div>
+
+      <!-- LAYER 3 : halaman kanan yang bisa diflip (foto2 depan, foto3 belakang) -->
+      <div class="page-right" id="pageRight">
+        <div class="page-right-front">
+          <img src="assets/foto2.jpeg" alt="foto 2">
+        </div>
+        <div class="page-right-back">
+          <img src="assets/foto3.jpeg" alt="foto 3">
+        </div>
+      </div>
+
+      <!-- LAYER 4 : COVER BUKU -->
+      <div class="cover" id="cover">
+        <div class="cover-front">
+          <div class="cover-decor">
+            <span class="cover-heart">💖</span>
+            <p class="cover-title">Our Moments</p>
+            <span class="cover-heart small">💕</span>
+            <p class="cover-sub">tap to open ✨</p>
+          </div>
+        </div>
+        <div class="cover-back"></div>
+      </div>
+
+    </div>
+    <p class="hint-text" id="hintText"></p>
+  </div>
+
+  <!-- 5. MOTIVASI -->
+  <div id="motivation" class="hidden">
+    <p id="motivText"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
